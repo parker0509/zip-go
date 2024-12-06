@@ -35,11 +35,11 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/zip-go:${{ github.sha }} .  # 이미지를 빌드하고 SHA로 태그 지정
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/zip-go:${{ github.sha }} .
 
       - name: Push Docker image to DockerHub
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/zip-go:${{ github.sha }}  # Docker Hub에 푸시
+          docker push ${{ secrets.DOCKER_USERNAME }}/zip-go:${{ github.sha }}  .
 
   deploy:
     runs-on: ubuntu-latest
