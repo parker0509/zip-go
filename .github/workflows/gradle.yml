@@ -22,28 +22,32 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      - name: Give gradlew execute permission
+        run: chmod +x ./gradlew  # gradlew에 실행 권한 부여
+
       - name: Build with Gradle
         run: ./gradlew build  # Gradle로 프로젝트 빌드
 
       - name: Docker login
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DOCKER_HUB_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+          username: ${{ secrets.DOCKER_USERNAME }}  # GitHub Secrets에서 Docker Hub 사용자명 가져오기
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}  # GitHub Secrets에서 Docker Hub 액세스 토큰 가져오기
 
       - name: Build Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/zip-go:${{ github.sha }} .  # 이미지를 빌드하고 SHA로 태그 지정
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/zip-go:${{ github.sha }} .  # 이미지를 빌드하고 SHA로 태그 지정
 
       - name: Push Docker image to DockerHub
         run: |
-          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/zip-go:${{ github.sha }}  # Docker Hub에 푸시
+          docker push ${{ secrets.DOCKER_USERNAME }}/zip-go:${{ github.sha }}  # Docker Hub에 푸시
 
   deploy:
     runs-on: ubuntu-latest
     needs: build
 
     steps:
+<<<<<<< HEAD
       - name: SSH to EC2 and deploy
         uses: appleboy/ssh-action@v0.1.3
         with:
@@ -56,3 +60,34 @@ jobs:
             docker-compose rm -f
             docker rmi sa2ntjulian/study-matching:latest
             docker-compose up -d
+=======
+      - name: Checkout repository
+        uses: actions/checkout@v4  # 리포지토리 코드를 체크아웃
+
+      - name: Set up Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose  # Docker Compose 설치
+
+      - name: SSH to EC2 and deploy with Docker Compose
+        uses: appleboy/ssh-action@v0.1.3
+        with:
+          host: 13.124.177.207 #${{ secrets.EC2_HOST }}  # EC2 호스트 주소
+          username: ubuntu  #${{ secrets.EC2_USER }}  # EC2 SSH 사용자명
+          key: ${{ secrets.EC2_SSH_KEY }}  # EC2 SSH 비밀키 (GitHub Secrets에 저장)
+          debug: true  # 디버그 모드 활성화
+          script: |
+            # Docker에서 이전 컨테이너가 실행 중이라면 중지하고 제거
+            CONTAINER_ID=$(docker ps -q --filter "name=zip-go")
+            if [ ! -z "$CONTAINER_ID" ]; then
+              docker stop $CONTAINER_ID
+              docker rm $CONTAINER_ID
+            fi
+            
+            # 최신 Docker 이미지 가져오기
+            docker pull ${{ secrets.DOCKER_USERNAME }}/zip-go:${{ github.sha }}
+            
+            # Docker Compose로 새로운 컨테이너 실행
+            docker-compose down  # 현재 실행 중인 컨테이너들을 종료하고 삭제
+            docker-compose up -d  # 새로운 컨테이너 실행
+>>>>>>> b19adeb6f0a07c97a46bb5d05b35a7cce052af0e
