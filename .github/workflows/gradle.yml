@@ -59,7 +59,7 @@ jobs:
         uses: appleboy/ssh-action@v0.1.3
         with:
           host: 13.124.177.207 #${{ secrets.EC2_HOST }}  # EC2 호스트 주소
-          username: ubnntu  #${{ secrets.EC2_USER }}  # EC2 SSH 사용자명
+          username: ubuntu  #${{ secrets.EC2_USER }}  # EC2 SSH 사용자명
           key: ${{ secrets.EC2_SSH_KEY }}  # EC2 SSH 비밀키 (GitHub Secrets에 저장)
           debug: true  # 디버그 모드 활성화
           script: |
