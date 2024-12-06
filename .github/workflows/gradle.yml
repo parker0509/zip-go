@@ -3,10 +3,10 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - main  # main 브랜치에 푸시할 때마다 CI/CD 실행
+      - main
   pull_request:
     branches:
-      - main  # main 브랜치에 대한 PR이 생성될 때마다 CI/CD 실행
+      - main
 
 jobs:
   build_and_push:
@@ -31,8 +31,8 @@ jobs:
       - name: Docker login
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}  # GitHub Secrets에서 Docker Hub 사용자명 가져오기
-          password: ${{ secrets.DOCKER_HUB_TOKEN }}  # GitHub Secrets에서 Docker Hub 액세스 토큰 가져오기
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
       - name: Build Docker image
         run: |
@@ -44,11 +44,11 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: build_and_push  # build_and_push job이 성공적으로 완료된 후에 실행
+    needs: build_and_push
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4  # 리포지토리 코드를 체크아웃
+        uses: actions/checkout@v4
 
       - name: Set up Docker Compose
         run: |
@@ -56,11 +56,11 @@ jobs:
           sudo apt-get install -y docker-compose  # Docker Compose 설치
 
       - name: SSH to EC2 and deploy with Docker Compose
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@v0.1.3
         with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_SSH_KEY }}
+          host: ${{ secrets.EC2_HOST }}  # EC2 호스트 주소
+          username: ${{ secrets.EC2_USER }}  # EC2 SSH 사용자명
+          key: ${{ secrets.EC2_SSH_KEY }}  # 비공개 SSH 키 (GitHub Secrets에 저장)
           script: |
             # Docker에서 이전 컨테이너가 실행 중이라면 중지하고 제거
             CONTAINER_ID=$(docker ps -q --filter "name=zip-go")
