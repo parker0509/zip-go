@@ -47,32 +47,16 @@ jobs:
     needs: build_and_push  # build_and_push job이 성공적으로 완료된 후에 실행
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4  # 리포지토리 코드를 체크아웃
-
-      - name: Set up Docker Compose
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y docker-compose  # Docker Compose 설치
-
-      - name: SSH to EC2 and deploy with Docker Compose
+      - name: SSH to EC2 and deploy
         uses: appleboy/ssh-action@v0.1.3
         with:
-          host: ${{ secrets.EC2_HOST }}  # EC2 호스트 주소
-          username: ${{ secrets.EC2_USER }}  # EC2 SSH 사용자명
-          key: ${{ secrets.EC2_SSH_KEY }}  # EC2 SSH 비밀키 (GitHub Secrets에 저장)
-          debug: true  # 디버그 모드 활성화
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            # Docker에서 이전 컨테이너가 실행 중이라면 중지하고 제거
-            CONTAINER_ID=$(docker ps -q --filter "name=zip-go")
-            if [ ! -z "$CONTAINER_ID" ]; then
-              docker stop $CONTAINER_ID
-              docker rm $CONTAINER_ID
-            fi
-            
-            # 최신 Docker 이미지 가져오기
-            docker pull ${{ secrets.DOCKER_USERNAME }}/zip-go:${{ github.sha }}
-            
-            # Docker Compose로 새로운 컨테이너 실행
-            docker-compose down  # 현재 실행 중인 컨테이너들을 종료하고 삭제
-            docker-compose up -d  # 새로운 컨테이너 실행
+            cd app
+            docker-compose stop
+            docker-compose rm -f
+            docker rmi gkstnaosi/zip-go:latest
+            docker-compose up -d
+
