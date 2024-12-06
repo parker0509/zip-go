@@ -60,7 +60,7 @@ jobs:
         with:
           host: ${{ secrets.EC2_HOST }}  # EC2 호스트 주소
           username: ${{ secrets.EC2_USER }}  # EC2 SSH 사용자명
-          key: ${{ secrets.AWS_ACCESS_KEY_ID }}  # EC2 SSH 비밀키 (GitHub Secrets에 저장)
+          key: ${{ secrets.EC2_SSH_KEY }}  # EC2 SSH 비밀키 (GitHub Secrets에 저장)
           script: |
             # Docker에서 이전 컨테이너가 실행 중이라면 중지하고 제거
             CONTAINER_ID=$(docker ps -q --filter "name=zip-go")
