@@ -30,7 +30,7 @@ jobs:
       - name: Docker login
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}  # GitHub Secrets에서 Docker Hub 사용자명 가져오기
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}  # GitHub Secrets에서 Docker Hub 사용자명 가져오기
           password: ${{ secrets.DOCKER_HUB_TOKEN }}  # GitHub Secrets에서 Docker Hub 액세스 토큰 가져오기
 
       - name: Build Docker image
