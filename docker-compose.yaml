@@ -5,33 +5,14 @@ networks:
     driver: bridge
 
 services:
-  # 예시: DB 서비스 추가
-
   # 예시: 웹 애플리케이션 서비스 추가
   house-app:
     image: gkstnaosi/zip-go:latest
     build: app # 실제 사용할 이미지로 변경
     container_name: zip-go
     ports:
-      - "8080:8080"
+      - "80:8080"
     networks:
       - house-network
     restart: always
 
-
-  # 필요시 다른 서비스들 추가
-  # 예시: 캐시 서비스 (Redis 등)
-  #redis:
-  # image: redis:latest
-  #container_name: house-redis
-   # ports:
-    #  - "6379:6379"
-    #networks:
-    #  - house-network
-    #restart: always
-
-
-#    environment:
-#      - SPRING_DATASOURCE_URL=jdbc:postgresql://house-db:5432/house_db
-#      - SPRING_DATASOURCE_USERNAME=myuser
-#      - SPRING_DATASOURCE_PASSWORD=mypassword
