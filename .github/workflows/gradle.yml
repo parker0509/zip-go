@@ -22,6 +22,9 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      - name: Give gradlew execute permission
+        run: chmod +x ./gradlew  # gradlew에 실행 권한 부여
+
       - name: Build with Gradle
         run: ./gradlew build  # Gradle로 프로젝트 빌드
 
@@ -47,7 +50,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4  # 리포지토리 코드를 체크아웃
 
-      - name: SSH to EC2 and deploy
+      - name: Set up Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose  # Docker Compose 설치
+
+      - name: SSH to EC2 and deploy with Docker Compose
         uses: appleboy/ssh-action@v0.1.3
         with:
           host: ${{ secrets.EC2_HOST }}  # EC2 호스트 주소
@@ -64,5 +72,6 @@ jobs:
             # 최신 Docker 이미지 가져오기
             docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/zip-go:${{ github.sha }}
             
-            # 새로운 컨테이너 실행
-            docker run -d --name zip-go -p 80:8080 ${{ secrets.DOCKER_HUB_USERNAME }}/zip-go:${{ github.sha }}
+            # Docker Compose로 새로운 컨테이너 실행
+            docker-compose down  # 현재 실행 중인 컨테이너들을 종료하고 삭제
+            docker-compose up -d  # 새로운 컨테이너 실행
