@@ -7,7 +7,7 @@ networks:
 services:
   # 예시: 웹 애플리케이션 서비스 추가
   house-app:
-    build: .
+    build: ./zip-go
     image: gkstnaosi/zip-go:latest
     container_name: zip-go
     ports:
