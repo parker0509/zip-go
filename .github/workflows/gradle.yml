@@ -54,7 +54,7 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd app
+            cd zip-go
             docker-compose stop
             docker-compose rm -f
             docker rmi gkstnaosi/zip-go:latest
