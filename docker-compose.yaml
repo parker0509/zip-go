@@ -8,10 +8,9 @@ services:
   # 예시: 웹 애플리케이션 서비스 추가
   house-app:
     image: gkstnaosi/zip-go:latest
-    build: app # 실제 사용할 이미지로 변경
     container_name: zip-go
     ports:
-      - "80:8080"
+      - "8080:8080"
     networks:
       - house-network
     restart: always
