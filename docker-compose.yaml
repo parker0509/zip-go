@@ -1,19 +1,19 @@
 version: "3.8"
 
 networks:
-  house-network:
+  btb-network:
     driver: bridge
 
 services:
   # 예시: 웹 애플리케이션 서비스 추가
   house-app:
-    build: ./zip-go
-    image: gkstnaosi/zip-go:latest
-    container_name: zip-go
+    build: .
+    image: gkstnaosi/contiroom:latest
+    container_name: contiroom
     ports:
       - "8080:8080"
     networks:
-      - house-network
+      - btb-network
     restart: always
 
 
