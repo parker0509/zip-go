@@ -63,7 +63,7 @@ jobs:
             sudo docker rm -f contiroom  # 강제 컨테이너 삭제 (여기서 "contiroom"은 컨테이너 이름)
             sudo docker rmi -f gkstnaosi/contiroom:latest  # 강제로 이미지를 삭제
             sudo docker-compose pull --no-cache  # 새로 이미지를 다운받기
-            sudo docker-compose up -d  # 백그라운드에서 실행
+            sudo docker-compose up -d --build  # 새로운 이미지를 빌드하고 실행
       ##cd zip-go
       ##docker-compose stop
       #docker-compose rm -f
