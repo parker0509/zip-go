@@ -21,5 +21,11 @@ public class homeController {
         return "TEST API 실행중...";
     }
 
+    @GetMapping("/room")
+    @ResponseBody
+    public String getRoom(){
+        return "Continuous Room";
+    }
+
 
 }
