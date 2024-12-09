@@ -55,12 +55,11 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd zip-go || exit 1
-            sudo docker-compose stop || true
-            sudo docker-compose rm -f || true
-            sudo docker rmi gkstnaosi/contiroom:latest || true
-            sudo docker-compose pull --no-cache
-            docker-compose build
+            cd zip-go
+            sudo docker-compose stop
+            sudo docker-compose rm -f
+            sudo docker rmi gkstnaosi/contiroom:latest
+            sudo docker-compose pull
             sudo docker-compose up -d
       
       
