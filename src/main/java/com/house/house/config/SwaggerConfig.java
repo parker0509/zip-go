@@ -19,9 +19,9 @@ import org.springframework.context.annotation.Configuration;
 
     private Info apiInfo() {
         return new Info()
-                .title("Camp-Reservation Swagger")
-                .description("Camp-Reservation REST API")
-                .version("1.0.0");
+                .title("Continroom")
+                .description("Continroom REST API")
+                .version("0.0.1");
     }
 
 }
