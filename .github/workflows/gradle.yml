@@ -58,11 +58,15 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             cd zip-go
-            # 기존 컨테이너 정지 및 강제 삭제
+            echo "Stopping and removing old containers..."
             sudo docker-compose down --volumes --remove-orphans  # 컨테이너와 볼륨, 고아 컨테이너 삭제
+            echo "Removing old container..."
             sudo docker rm -f contiroom  # 강제 컨테이너 삭제 (여기서 "contiroom"은 컨테이너 이름)
+            echo "Removing old image..."
             sudo docker rmi -f gkstnaosi/contiroom:latest  # 강제로 이미지를 삭제
+            echo "Pulling latest images..."
             sudo docker-compose pull --no-cache  # 새로 이미지를 다운받기
+            echo "Starting new container..."
             sudo docker-compose up -d --build  # 새로운 이미지를 빌드하고 실행
       ##cd zip-go
       ##docker-compose stop
