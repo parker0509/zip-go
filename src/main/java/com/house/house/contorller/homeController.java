@@ -11,7 +11,7 @@ public class homeController {
     @ResponseBody
     public String getHome() {
 
-        return "TEST API";
+        return "TEST API 실행중...";
     }
 
 
