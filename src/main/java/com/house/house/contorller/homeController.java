@@ -11,7 +11,7 @@ public class homeController {
     @ResponseBody
     public String getHome() {
 
-        return "안녕하세요 민경씨 ^^";
+        return "TEST API";
     }
 
 
