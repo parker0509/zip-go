@@ -54,16 +54,19 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-           # 기존에 실행 중인 컨테이너를 중지하고 삭제
-           docker stop zip-go-container || true
-           docker rm zip-go-container || true
-           # 최신 이미지를 Docker Hub에서 pull
-           docker pull gkstnaosi/zip-go:latest
-           # 새로운 컨테이너 실행
-           docker run -d --name zip-go-container -p 8080:8080 gkstnaosi/zip-go:latest
+            # 기존에 실행 중인 컨테이너를 중지하고 삭제
+            docker stop zip-go-container || true
+            docker rm zip-go-container || true
 
+            # 최신 이미지를 Docker Hub에서 pull
+            docker pull gkstnaosi/zip-go:latest
 
-
+            # 새로운 컨테이너 실행
+            docker run -d --name zip-go-container -p 8080:8080 gkstnaosi/zip-go:latest
+      
+      
+      
+      
 
       ##cd zip-go
       ##docker-compose stop
