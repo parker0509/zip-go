@@ -36,8 +36,8 @@ jobs:
 
       - name: Build and Push Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/house .
-          docker push ${{ secrets.DOCKER_HUB_TOKEN }}/house
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/contiroom .
+          docker push ${{ secrets.DOCKER_HUB_TOKEN }}/contiroom 
 
   deploy:
     runs-on: ubuntu-latest
