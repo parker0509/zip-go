@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@Tag(name = "homeAPI", description = "Live Server Check")
+@Tag(name = "Home", description = "연방 홈 페이지 관련 API")
+
 public class homeController {
 
 
