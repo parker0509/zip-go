@@ -1,1 +1,7 @@
-spring.application.name=house
+spring:
+  application:
+    name: studymatching_api
+  security:
+    user:
+      name: swagger
+      password: studyMatching1!

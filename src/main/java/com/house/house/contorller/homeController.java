@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @Tag(name = "Home", description = "연방 홈 페이지 관련 API")
 public class homeController {
-    
+
     @Operation(summary = "Server LIVE CHECK ", description = "서버 체크 용", responses = {
             @ApiResponse(responseCode = "200",description = "Server ON")})
 
