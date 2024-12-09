@@ -60,4 +60,5 @@ jobs:
             docker rmi gkstnaosi/zip-go:latest
             docker-compose build --no-cache
             docker-compose up -d
+        debug: true  # 디버깅 활성화
 
