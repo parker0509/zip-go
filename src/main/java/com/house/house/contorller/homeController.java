@@ -1,11 +1,20 @@
 package com.house.house.contorller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
+@Tag(name = "homeAPI", description = "Live Server Check")
 public class homeController {
+
+
+
+    @Operation(summary = "Server LIVE CHECK ", description = "서버 체크 용", responses = {
+            @ApiResponse(responseCode = "200",description = "Server ON")})
 
     @GetMapping("/")
     @ResponseBody
