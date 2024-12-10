@@ -18,7 +18,7 @@ public class homeController {
     @ResponseBody
     public String getHome() {
 
-        return "이 페이지는 테스트 페이지입니다..";
+        return "Test Version v0.0.1";
     }
 
     @GetMapping("/room")
