@@ -61,6 +61,7 @@ jobs:
             docker-compose stop
             docker-compose rm -f
             docker rmi gkstnoasi/contiroom:latest
+            docker pull gkstnaosi/contiroom:latest
             
             docker-compose up -d
 
