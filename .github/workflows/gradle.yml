@@ -19,9 +19,9 @@ jobs:
       # 민감한 정보를 application.yaml에 주입
       - name: Inject DB credentials into application.yaml
         run: |
-          sed -i "s|DB_URL|${{ secrets.DB_URL }}|g" /zip-go/src/main/resources/application.yaml
-          sed -i "s|DB_USERNAME|${{ secrets.DB_USERNAME }}|g" /zip-go/src/main/resource/application.yaml
-          sed -i "s|DB_PASSWORD|${{ secrets.DB_PASSWORD }}|g" /zip-go/src/main/resource/application.yaml
+          sed -i "s|DB_URL|${{ secrets.DB_URL }}|g" ./src/main/resources/application.yaml
+          sed -i "s|DB_USERNAME|${{ secrets.DB_USERNAME }}|g" ./src/main/resources/application.yaml
+          sed -i "s|DB_PASSWORD|${{ secrets.DB_PASSWORD }}|g" ./src/main/resources/application.yaml
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
