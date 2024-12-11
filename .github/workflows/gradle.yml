@@ -44,13 +44,27 @@ jobs:
     needs: build_and_push  # build_and_push job이 성공적으로 완료된 후에 실행
 
     steps:
+  # application.yaml 파일 생성 및 설정
+      - name: Set application properties
+        run: |
+          echo "datasource:" > ./src/main/resources/application.yaml
+          echo "  driver-class-name: com.mysql.cj.jdbc.Driver" >> ./src/main/resources/application.yaml
+          echo "  url: ${ { secrets.DB_URL } }" >> ./src/main/resources/application.yaml
+          echo "  username: ${ { secrets.DB_USERNAME } }" >> ./src/main/resources/application.yaml
+          echo "  password: ${ { secrets.DB_PASSWORD } }" >> ./src/main/resources/application.yaml
+
+      # 확인용 출력 (선택사항)
+          cat ./src/main/resources/application.yaml
+
       - name: SSH to EC2 and deploy
         uses: appleboy/ssh-action@v0.1.3
         with:
 
-          #문 제 발 생
+          #문 제 발 생 해결 완료 ->
           #ssh: handshake failed: ssh: unable to authenticate,
           # attempted methods [none publickey], no supported methods remain
+
+
 
 
           host: ${{ secrets.EC2_HOST }}
