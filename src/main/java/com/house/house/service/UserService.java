@@ -12,8 +12,8 @@ import java.util.Optional;
 @Service
 public class UserService {
 
-    private UserRepository userRepository;
-    private BCryptPasswordEncoder passwordEncoder;
+    private final UserRepository userRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
     public UserService(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
@@ -44,7 +44,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    //UPDATA
+    //UPDATE
     public void updateUser(User user){
 
         Optional<User> update = userRepository.findById(user.getId());
