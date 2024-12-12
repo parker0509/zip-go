@@ -30,48 +30,50 @@ body {
 
 
         /* Hero Section */
-        .hero {
-            position: relative;
-            width: 100%;
-            height: 300px; /* 슬라이더 높이 */
-            overflow: hidden;
-        }
+.hero {
+    position: relative;
+    width: 100%;
+    height: 300px; /* 슬라이더 높이 */
+    overflow: hidden;
+    margin-bottom: 30px;
+}
 
-        .hero .hero-images {
-            display: flex;
-            transition: transform 0.5s ease;
-            cursor: grab; /* 드래그 커서 */
-        }
+.hero .hero-images {
+    display: flex;
+    transition: transform 0.5s ease;
+    cursor: grab;
+}
 
-        .hero img {
-            width: 100%;
-            height: 300px; /* 슬라이더 높이에 맞춤 */
-            object-fit: cover;
-            flex-shrink: 0; /* 이미지가 줄어들지 않도록 */
-        }
+.hero img {
+    width: 100%;
+    height: 100%; /* 이미지가 슬라이더 공간에 맞춰지도록 설정 */
+    object-fit: cover;
+    flex-shrink: 0;
+}
 
-        /* 하단 점 표시 */
-        .hero .dots {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-        }
+/* 하단 점 표시 */
+.hero .dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
 
-        .hero .dots .dot {
-            width: 12px;
-            height: 12px;
-            background-color: #ccc;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+.hero .dots .dot {
+    width: 12px;
+    height: 12px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
-        .hero .dots .dot.active {
-            background-color: #333;
-        }
+.hero .dots .dot.active {
+    background-color: #FF5722;
+}
+
 /* 푸터 스타일 */
 .footer {
     background-color: #FFFFFF; /* 다크 회색 푸터 */
