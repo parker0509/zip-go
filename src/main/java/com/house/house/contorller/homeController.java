@@ -29,7 +29,7 @@ public class homeController {
 
     @GetMapping("/")
     public String getHome() {
-        return "/home";
+        return "home";
     }
 
     @GetMapping("/room")
