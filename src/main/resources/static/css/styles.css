@@ -33,28 +33,27 @@ body {
 .hero {
     position: relative;
     width: 100%;
-    height: 300px; /* 슬라이더 높이 */
+    height: 90px; /* 0.3배 축소된 높이 */
     overflow: hidden;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .hero .hero-images {
     display: flex;
     transition: transform 0.5s ease;
-    cursor: grab;
 }
 
 .hero img {
-    width: 100%;
-    height: 100%; /* 이미지가 슬라이더 공간에 맞춰지도록 설정 */
+    width: 33.33%; /* 0.3배 크기 축소 */
+    height: 100%;
     object-fit: cover;
     flex-shrink: 0;
 }
 
-/* 하단 점 표시 */
+/* 점 (dots) */
 .hero .dots {
     position: absolute;
-    bottom: 20px;
+    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -62,8 +61,8 @@ body {
 }
 
 .hero .dots .dot {
-    width: 12px;
-    height: 12px;
+    width: 8px; /* 0.3배 크기 축소 */
+    height: 8px;
     background-color: #ccc;
     border-radius: 50%;
     cursor: pointer;
@@ -74,134 +73,67 @@ body {
     background-color: #FF5722;
 }
 
-/* 푸터 스타일 */
-.footer {
-    background-color: #FFFFFF; /* 다크 회색 푸터 */
-    color: black;
-    text-align: center;
-    padding: 30px 20px;
-}
-
-.footer a {
-    color: #aaa;
-    text-decoration: none;
-}
-
-.footer a:hover {
-    color: #fff;
-}
-
-/* 상품 카드 */
-.product-card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    overflow: hidden;
-    width: 250px;
-    height: 500px;
-    margin: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-}
-
-.product-container {
+/* Room Card */
+.room-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start; /* 아이템들이 왼쪽으로 정렬되어 간격이 좁아짐 */
-    gap: 10px;
+    gap: 15px;
     margin-top: 20px;
+    justify-content: center;
 }
 
-.product-card img {
+.room-card {
+    background-color: #fff;
+    border-radius: 8px;
+    width: 200px; /* 크기 축소 */
+    overflow: hidden;
+}
+
+.room-card img {
     width: 100%;
-    height: 300px;
+    height: 150px; /* 크기 축소 */
     object-fit: cover;
-    border-bottom: 1px solid #ddd;
 }
 
-.product-card .card-body {
+.room-card-body {
     padding: 10px;
 }
 
-.product-card .card-title {
+.room-card-title {
+    font-family: 'Montserrat', sans-serif;
     font-size: 1rem;
-    font-weight: bold;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #37474F;
+}
+
+.room-card-description {
+    font-size: 0.8rem;
+    color: #777;
     margin-bottom: 5px;
 }
 
-.product-card .card-text {
-    font-size: 0.9rem;
-    color: #555;
-    margin-bottom: 10px;
-}
-
-.product-card .card-text strong {
+.room-card-price {
     font-size: 1rem;
-    color: #333;
+    font-weight: 700;
+    color: #FF5722;
 }
 
-.product-card .btn {
-    background-color: #777;
-    border-color: #777;
-    padding: 8px 15px;
-    font-size: 1rem;
-    border-radius: 20px;
-    transition: background-color 0.3s ease;
-    display: none;
+/* Footer */
+.footer {
+    background-color: #37474F;
+    color: #ddd;
+    text-align: center;
+    padding: 15px 0;
 }
 
-.product-card .btn:hover {
-    background-color: #666;
-    border-color: #666;
+.footer a {
+    color: #FF5722;
+    text-decoration: none;
+    margin: 0 5px;
+    font-weight: 500;
 }
- /* 카드 컨테이너 스타일 */
-        .room-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
 
-        /* 개별 카드 스타일 */
-        .room-card {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background-color: #fff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .room-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .room-card img {
-            width: 100%;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
-        }
-
-        .room-card-body {
-            padding: 1rem;
-        }
-
-        .room-card-title {
-            font-size: 1.25rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        .room-card-description {
-            font-size: 0.9rem;
-            color: #555;
-        }
-
-        .room-card-price {
-            font-size: 1rem;
-            font-weight: bold;
-            color: #007bff;
-            margin-top: 0.5rem;
-        }
+.footer a:hover {
+    text-decoration: underline;
+}
