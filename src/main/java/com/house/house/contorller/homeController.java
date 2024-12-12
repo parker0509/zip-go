@@ -31,7 +31,7 @@ public class homeController {
     @ResponseBody
     public String getHome() {
 
-        return "Test Version v0.0.1";
+        return "/home";
     }
 
     @GetMapping("/room")
