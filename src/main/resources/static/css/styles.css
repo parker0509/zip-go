@@ -28,71 +28,50 @@ body {
     color: #aaa !important; /* 회색 톤으로 변경 */
 }
 
-/* Hero Section */
-.hero {
-    position: relative;
-    width: 100%;
-    height: 500px; /* 슬라이더 높이 */
-    overflow: hidden;
-    margin-bottom: 50px;
-}
 
-.hero .hero-images {
-    display: flex;
-    transition: transform 0.5s ease;
-}
+        /* Hero Section */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 300px; /* 슬라이더 높이 */
+            overflow: hidden;
+        }
 
-.hero img {
-    width: 100%;
-    height: 500px;
-    object-fit: cover;
-    flex-shrink: 0; /* 이미지가 줄어들지 않도록 */
-}
+        .hero .hero-images {
+            display: flex;
+            transition: transform 0.5s ease;
+            cursor: grab; /* 드래그 커서 */
+        }
 
-.hero .btn-primary {
-    background-color: #777; /* 회색 버튼 */
-    border-color: #777;
-    padding: 15px 30px;
-    font-size: 1.1rem;
-    border-radius: 20px;
-    transition: background-color 0.3s ease;
-    position: absolute;
-    bottom: 50px;
-    left: 50%;
-    transform: translateX(-50%);
-}
+        .hero img {
+            width: 100%;
+            height: 300px; /* 슬라이더 높이에 맞춤 */
+            object-fit: cover;
+            flex-shrink: 0; /* 이미지가 줄어들지 않도록 */
+        }
 
-.hero .btn-primary:hover {
-    background-color: #666; /* 버튼 호버 시 어두운 회색 */
-    border-color: #666;
-}
+        /* 하단 점 표시 */
+        .hero .dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
 
-/* 왼쪽/오른쪽 버튼 스타일 */
-.hero .prev, .hero .next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    font-size: 2rem;
-    padding: 15px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+        .hero .dots .dot {
+            width: 12px;
+            height: 12px;
+            background-color: #ccc;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
-.hero .prev {
-    left: 20px;
-}
-
-.hero .next {
-    right: 20px;
-}
-
-.hero .prev:hover, .hero .next:hover {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
+        .hero .dots .dot.active {
+            background-color: #333;
+        }
 /* 푸터 스타일 */
 .footer {
     background-color: #FFFFFF; /* 다크 회색 푸터 */
