@@ -32,8 +32,8 @@ body {
         /* Hero Section */
 .hero {
     position: relative;
-    width: 100%;
-    height: 300px; /* 슬라이더 높이 */
+    width: 30%;
+    height: 50px; /* 슬라이더 높이 */
     overflow: hidden;
     margin-bottom: 30px;
 }
