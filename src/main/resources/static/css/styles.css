@@ -1,40 +1,31 @@
 /* 기본 스타일 */
+/* 기본 스타일 */
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f1f1f1; /* 밝은 회색 배경 */
+    background-color: #f9f9f9;
     color: #333;
 }
 
 .navbar {
-    background-color: #FFFFFF; /* 흰색 */
+    background-color: #fdfdfd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-brand {
-    color: black !important;
     font-family: 'Montserrat', sans-serif;
     font-size: 1.8rem;
     font-weight: 700;
 }
 
-.navbar-nav .nav-link {
-    color: black !important;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-.navbar-nav .nav-link:hover {
-    color: #aaa !important; /* 회색 톤으로 변경 */
-}
-
-/* Hero Section */
 .hero {
     position: relative;
     width: 100%;
-    height: 500px; /* 슬라이더 높이 */
+    height: 500px;
     overflow: hidden;
-    margin-bottom: 50px;
+    text-align: center;
+    background: linear-gradient(to bottom, #fdfdfd, #eaeaea);
 }
 
 .hero .hero-images {
@@ -46,130 +37,53 @@ body {
     width: 100%;
     height: 500px;
     object-fit: cover;
-    flex-shrink: 0; /* 이미지가 줄어들지 않도록 */
+    flex-shrink: 0;
+}
+
+.hero .hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #333;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #222;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #555;
 }
 
 .hero .btn-primary {
-    background-color: #777; /* 회색 버튼 */
-    border-color: #777;
-    padding: 15px 30px;
-    font-size: 1.1rem;
-    border-radius: 20px;
-    transition: background-color 0.3s ease;
-    position: absolute;
-    bottom: 50px;
-    left: 50%;
-    transform: translateX(-50%);
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    color: #fff;
 }
 
 .hero .btn-primary:hover {
-    background-color: #666; /* 버튼 호버 시 어두운 회색 */
-    border-color: #666;
+    background-color: #45a049;
 }
 
-/* 왼쪽/오른쪽 버튼 스타일 */
-.hero .prev, .hero .next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    font-size: 2rem;
-    padding: 15px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.hero .prev {
-    left: 20px;
-}
-
-.hero .next {
-    right: 20px;
-}
-
-.hero .prev:hover, .hero .next:hover {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-/* 푸터 스타일 */
 .footer {
-    background-color: #FFFFFF; /* 다크 회색 푸터 */
-    color: black;
+    background-color: #fdfdfd;
+    color: #333;
     text-align: center;
-    padding: 30px 20px;
+    padding: 20px;
 }
 
 .footer a {
-    color: #aaa;
+    color: #4CAF50;
     text-decoration: none;
 }
 
 .footer a:hover {
-    color: #fff;
-}
-
-/* 상품 카드 */
-.product-card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    overflow: hidden;
-    width: 250px;
-    height: 500px;
-    margin: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-}
-
-.product-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start; /* 아이템들이 왼쪽으로 정렬되어 간격이 좁아짐 */
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.product-card img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-bottom: 1px solid #ddd;
-}
-
-.product-card .card-body {
-    padding: 10px;
-}
-
-.product-card .card-title {
-    font-size: 1rem;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.product-card .card-text {
-    font-size: 0.9rem;
-    color: #555;
-    margin-bottom: 10px;
-}
-
-.product-card .card-text strong {
-    font-size: 1rem;
-    color: #333;
-}
-
-.product-card .btn {
-    background-color: #777;
-    border-color: #777;
-    padding: 8px 15px;
-    font-size: 1rem;
-    border-radius: 20px;
-    transition: background-color 0.3s ease;
-    display: none;
-}
-
-.product-card .btn:hover {
-    background-color: #666;
-    border-color: #666;
+    color: #45a049;
 }
