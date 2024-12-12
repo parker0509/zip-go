@@ -27,15 +27,12 @@ public class homeController {
     @Operation(summary = "Server LIVE CHECK ", description = "서버 체크 용", responses = {
             @ApiResponse(responseCode = "200",description = "Server ON")})
 
-    @GetMapping()
-    @ResponseBody
+    @GetMapping("/")
     public String getHome() {
-
         return "/home";
     }
 
     @GetMapping("/room")
-    @ResponseBody
     public String getRoom(){
         return "Continuous Room";
     }
